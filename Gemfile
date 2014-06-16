@@ -13,8 +13,8 @@ gem 'jquery-rails'
 
 gem 'activeadmin',          github: 'gregbell/active_admin'
 gem "devise", '~> 3.2.0'
-gem "meta_search",    '>= 1.1.0.pre'
-# ^for activeadmin
+# gem "meta_search",    '>= 1.1.0.pre'
+# ^for activeadmin == look into this
 
 # gem "pygments.rb", "0.3.2"
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'master'
@@ -59,7 +59,6 @@ group :test do
   gem 'launchy', '2.1.2'
   gem "mocha", require: false
   gem 'simplecov', '~> 0.7.1', require: false
-  gem 'stripe-ruby-mock', '>= 1.8.7'
   gem 'selenium-webdriver'
 end
 
@@ -75,4 +74,4 @@ end
 # gem 'public_activity'
 # gem 'state_machine'
 
-# actionpack 4.1.1 ????
+# gem 'actionpack' 4.1.1 ????
