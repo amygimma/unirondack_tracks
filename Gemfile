@@ -13,7 +13,7 @@ gem 'jquery-rails'
 
 gem 'activeadmin',          github: 'gregbell/active_admin'
 gem "devise", '~> 3.2.0'
-gem "meta_search",    '>= 1.1.0.pre'
+# gem "meta_search",    '>= 1.1.0.pre'
 # ^for activeadmin
 
 # gem "pygments.rb", "0.3.2"
@@ -75,4 +75,4 @@ end
 # gem 'public_activity'
 # gem 'state_machine'
 
-# actionpack 4.1.1 ????
+# gem 'actionpack' 4.1.1 ????
