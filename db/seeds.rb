@@ -5,4 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-FactoryGirl.create(:camper)
+Camper.destroy_all
+AdminUser.destroy_all
+CampSession.destroy_all
+
+
+FactoryGirl.create(:camp_session)
+FactoryGirl.create(:admin_user)
+FactoryGirl.create(:camper, camp_session_id: 1)
