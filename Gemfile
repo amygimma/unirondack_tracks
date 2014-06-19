@@ -9,6 +9,7 @@ gem 'coffee-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+gem 'turbolinks'
 # gem 'prawn', "0.12.0" pdf generator
 
 gem 'activeadmin',          github: 'gregbell/active_admin'

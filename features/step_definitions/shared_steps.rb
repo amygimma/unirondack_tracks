@@ -5,3 +5,12 @@ Given(/^I am an admin$/) do
   fill_in "Password", with: @admin.password
   click_on "Login"
 end
+
+
+Given(/^I am a user$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I am signed in$/) do
+  pending # express the regexp above with the code you wish you had
+end
