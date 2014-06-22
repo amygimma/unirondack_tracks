@@ -3,5 +3,6 @@ class CampersController < ApplicationController
   end
 
   def index
+    @campers = Camper.all
   end
 end

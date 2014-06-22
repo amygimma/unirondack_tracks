@@ -18,6 +18,13 @@ UnirondackTracks::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :items, only: [:index], format: false
 
+  resources :camp_sessions, only: [:index] do
+    resources :campers, only: [:index]
+  end
+
+  resources :campers, only: [:index]
+
+
   # Example resource route with options:
   #   resources :products do
   #     member do
