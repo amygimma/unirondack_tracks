@@ -1,6 +1,9 @@
 <div class="col-sm-3 item">
-  <h1><%= item.name %></h1>
-  <p>price: <%= item.price %></p>
-  <p>quantity: <%= item.quantity %></p>
-  <p>sold: <%= item.sold unless nil %></p>
+  <%= form_for CartItem.create(item: item, cart: @cart) do |f| %>
+    <h1><%= item.name %></h1>
+    <p>price: <%= item.price %></p>
+    <p>quantity: <%= item.quantity %></p>
+    <p>sold: <%= item.sold unless nil %></p>
+    <button>Add To Cart</button>
+  <% end %>
 </div>
