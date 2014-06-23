@@ -24,6 +24,13 @@ UnirondackTracks::Application.routes.draw do
 
   resources :campers, only: [:index]
 
+  resources :carts, only: [:show, :new, :create] do
+    resources :cart_items, only: [:show, :new]
+  end
+
+  resources :cart_items, only: [:show, :new, :update]
+
+
 
   # Example resource route with options:
   #   resources :products do

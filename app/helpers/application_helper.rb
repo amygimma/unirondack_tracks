@@ -1,4 +1,5 @@
 module ApplicationHelper
-  def price_display
+  def sizes(item)
+    Item.where(name: item.name)
   end
 end
