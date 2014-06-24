@@ -1,4 +1,5 @@
 UnirondackTracks::Application.routes.draw do
+  devise_for :users
   get "campers/show"
   get "campers/index"
   devise_for :admin_users, ActiveAdmin::Devise.config
