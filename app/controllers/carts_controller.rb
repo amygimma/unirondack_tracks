@@ -10,6 +10,7 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find(params[:id])
+    @categories = Category.all
     @items = Item.all
     @cart_item = CartItem.new
   end
