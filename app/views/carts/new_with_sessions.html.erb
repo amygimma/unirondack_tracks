@@ -1,0 +1,18 @@
+Not being used, but almost works with the helpers in cart_helper.
+Saves the last value only, even if its nil
+<div class="new-cart">
+  <h1>Start a Cart</h1>
+  <%= simple_form_for(@cart) do |f| %>
+    <h3>Choose a camper:</h3>
+    <% camp_sessions_list.each do |cs| %>
+      <div class="choose-camper"><h3><%= cs.name %></h3><%= f.collection_select(:camper_id, list_of_campers(cs), :id, :name, prompt: "campers") %></div>
+    <% end %>
+    <button>Cart</button>
+  <% end %>
+</div>
+
+notes:
+
+make a flash that says "choose a camper" when saved without a camper ( validate presence with after_create filter??).
+
+make a helper method that shows the campers for session previously chosen

@@ -1,4 +1,8 @@
-<%= form_for(@cart) do |f| %>
-  <button>Cart</button>
-  <p>add user relationship to this</p>
-<% end %>
+<div class="new-cart">
+  <h1>Start a Cart</h1>
+  <%= simple_form_for(@cart) do |f| %>
+    <h3>Choose a camper:</h3>
+      <div class="choose-camper"><%= f.collection_select(:camper_id, list_of_campers, :id, :name, prompt: "campers") %></div>
+    <button>New Cart</button>
+  <% end %>
+</div>
