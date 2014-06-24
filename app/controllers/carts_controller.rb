@@ -4,8 +4,9 @@ class CartsController < ApplicationController
   end
 
   def create
-    @cart = Cart.create
-    redirect_to cart_path(@cart)
+    @cart = Cart.create(cart_params)
+    redirect_to cart_path(@cart) if @cart.save!
+    redirect_to cart_path(@cart) unless @cart.save!
   end
 
   def show
@@ -16,5 +17,11 @@ class CartsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+
+  def cart_params
+    params.require(:cart).permit(:camper_id)
   end
 end
