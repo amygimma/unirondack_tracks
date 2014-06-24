@@ -14,5 +14,12 @@ Item.destroy_all
 FactoryGirl.create(:camp_session)
 FactoryGirl.create(:admin_user)
 FactoryGirl.create(:camper, camp_session_id: 1)
-FactoryGirl.create(:item)
-FactoryGirl.create(:item, name: "t-shirt", price: 10.00, quantity: 150, sold: 50)
+@tshirt = FactoryGirl.create(:category, name: "t-shirt", price: 10.00)
+@popsicle = FactoryGirl.create(:category, name: "popsicle", price: 1.00)
+
+
+FactoryGirl.create(:item, category: @tshirt, name: "t-shirt", price: 10.00, quantity: 150, sold: 50, size: "small")
+FactoryGirl.create(:item, category: @tshirt, name: "t-shirt", price: 10.00, quantity: 150, sold: 50, size: "medium")
+FactoryGirl.create(:item, category: @tshirt, name: "t-shirt", price: 10.00, quantity: 150, sold: 50, size: "large")
+FactoryGirl.create(:item, category: @popsicle, name: "Popsicle", price: 1.00, quantity: 150, sold: 50, size: "cherry")
+FactoryGirl.create(:item, category: @popsicle, name: "Popsicle", price: 1.00, quantity: 150, sold: 50, size: "orange")

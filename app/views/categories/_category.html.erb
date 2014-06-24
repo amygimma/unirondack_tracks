@@ -1,0 +1,12 @@
+<div class="col-sm-3 category">
+    <div class="pull-left">
+
+      <h1><%= category.name %></h1>
+      <p>price: <%= number_to_currency(category.price) %> </p>
+    </div>
+    <div class="pull-right">
+      <% category.items.each do |item| %>
+          <button><%= "#{item.color} -" if item.color %>  <%= item.size || item.flavor || item.name %></button>
+        <% end %>
+    </div>
+</div>
