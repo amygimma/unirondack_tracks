@@ -49,6 +49,37 @@ ActiveRecord::Schema.define(version: 20140624033320) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "articles", force: true do |t|
+    t.datetime "updated"
+    t.string   "title"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "content_type"
+    t.text     "preview"
+    t.integer  "contact_id"
+    t.text     "tags"
+    t.string   "service_url"
+    t.string   "slug"
+    t.integer  "category_id"
+    t.integer  "access_count",            default: 0
+    t.string   "author_pic_file_name"
+    t.string   "author_pic_content_type"
+    t.integer  "author_pic_file_size"
+    t.datetime "author_pic_updated_at"
+    t.string   "author_name"
+    t.string   "author_link"
+    t.string   "type"
+    t.text     "content_main"
+    t.text     "content_main_extra"
+    t.text     "content_need_to_know"
+    t.integer  "user_id"
+    t.boolean  "published"
+    t.boolean  "pending_review"
+  end
+
+  add_index "articles", ["slug"], name: "index_articles_on_slug", using: :btree
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+
   create_table "camp_sessions", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -85,6 +116,62 @@ ActiveRecord::Schema.define(version: 20140624033320) do
     t.datetime "updated_at"
   end
 
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "subname"
+    t.string   "number"
+    t.string   "url"
+    t.string   "address"
+    t.string   "department"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0
+    t.integer  "attempts",   default: 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "departments", force: true do |t|
+    t.string   "name"
+    t.string   "acronym"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "guide_steps", force: true do |t|
+    t.integer  "article_id"
+    t.string   "title"
+    t.text     "content"
+    t.text     "preview"
+    t.integer  "step"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: true do |t|
     t.string   "name"
     t.float    "price"
@@ -97,6 +184,46 @@ ActiveRecord::Schema.define(version: 20140624033320) do
     t.string   "flavor"
     t.string   "color"
   end
+
+  create_table "keywords", force: true do |t|
+    t.string   "name"
+    t.string   "metaphone"
+    t.string   "stem"
+    t.text     "synonyms"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rails_admin_histories", force: true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      limit: 2
+    t.integer  "year",       limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+
+  create_table "things", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "things", ["email"], name: "index_things_on_email", unique: true, using: :btree
+  add_index "things", ["reset_password_token"], name: "index_things_on_reset_password_token", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -115,5 +242,13 @@ ActiveRecord::Schema.define(version: 20140624033320) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "wordcounts", force: true do |t|
+    t.integer  "article_id"
+    t.integer  "keyword_id"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
