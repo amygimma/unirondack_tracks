@@ -27,8 +27,11 @@ UnirondackTracks::Application.routes.draw do
   resources :campers, only: [:index]
 
   resources :carts, only: [:show, :new, :create] do
-    resources :cart_items, only: [:show, :new]
+    resources :cart_items, only: [:show, :new, :create, :update]
   end
+
+  resources :cart_items, only: [:show, :new, :create, :update]
+
 
   resources :cart_items, only: [:show, :new, :update]
 

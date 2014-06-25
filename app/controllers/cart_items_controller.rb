@@ -1,19 +1,21 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_user!
   def new
-    @cart_item = Cart.new
-    cart = CartItem.find(params[:id]).cart
-
-    redirect_to cart_path(cart)
+    @cart_item = CartItem.new
   end
 
   def create
-    # cart = CartItem.find(params[:id]).cart
-    # redirect_to cart_path(cart), notice: "cart updated"
+    @cart_item = CartItem.create(cart_item_params)
+    redirect_to cart_path(@cart_item.cart) if @cart_item.save!
   end
 
   def update
-    cart = CartItem.find(params[:id]).cart
-    redirect_to cart_path(cart), notice: "cart updated"
+    # @cart_item = CartItem.find(params[:id]).cart
+  end
+
+  private
+
+  def cart_item_params
+    params.require(:cart_item).permit(:cart_id, :item_id)
   end
 end
