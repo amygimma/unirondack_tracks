@@ -14,7 +14,7 @@ $(function() {
 
 <h1>All Campers</h1>
 <div class="row">
-  Order By Camp Session: <%= select "select", "session", @camp_sessions.map { |h|  [h.name, h.id-1] }, {prompt: "All"}, {:class => "select_query"} %></br>
+  Order By Camp Session: <%= select "select", "session", @camp_sessions.map { |h|  [h.name, h.id] }, {prompt: "All"}, {:class => "select_query"} %></br>
 
   <%= render @campers %>
 </div>
