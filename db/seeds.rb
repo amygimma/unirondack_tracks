@@ -9,7 +9,7 @@ Camper.destroy_all
 AdminUser.destroy_all
 CampSession.destroy_all
 Item.destroy_all
-
+Category.destroy_all
 
 FactoryGirl.create(:camp_session)
 FactoryGirl.create(:camp_session, name: "Teens")

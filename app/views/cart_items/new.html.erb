@@ -1,0 +1,7 @@
+<%= form_for @cart_item do |f| %>
+    <%= f.text_field :cart_id %>
+    <%= f.text_field :item_id %>
+
+
+  <%= f.submit "Save Predictions", class: "btn btn-info btn-us center", method: "post" %>
+<% end %>

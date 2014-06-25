@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @items = Item.all.order(:name)
+    @items = Item.all.order(:category_id)
   end
 end
