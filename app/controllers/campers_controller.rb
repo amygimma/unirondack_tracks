@@ -4,7 +4,7 @@ class CampersController < ApplicationController
   end
 
   def index
-    @campers = Camper.order(name: :asc)
+    @campers = Camper.where("camp_session_id = ?", 1).order(name: :asc)
     @camp_sessions = CampSession.order(name: :asc)
   end
 end
