@@ -4,6 +4,7 @@ class CampersController < ApplicationController
   end
 
   def index
-    @campers = Camper.all
+    @campers = Camper.order(name: :asc)
+    @camp_sessions = CampSession.order(name: :asc)
   end
 end

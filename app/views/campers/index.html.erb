@@ -1,4 +1,20 @@
+<script>
+$(function() {
+  $( "#select_session" ).change(function() {
+
+  var session_id = $("#select_session").val();
+  var query_url = "/campers/by_session/" + session_id
+  window.location.replace(query_url); 
+
+  });
+  
+});
+  
+</script>
+
 <h1>All Campers</h1>
 <div class="row">
+  Order By Camp Session: <%= select "select", "session", @camp_sessions.map { |h| [h.name, h.id] }, {prompt: "All"}, {:class => "select_query"} %></br>
+
   <%= render @campers %>
 </div>

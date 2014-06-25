@@ -1,4 +1,5 @@
 UnirondackTracks::Application.routes.draw do
+  root "static_pages#index"
   devise_for :users
   get "campers/show"
   get "campers/index"
