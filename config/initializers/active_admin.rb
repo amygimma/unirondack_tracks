@@ -157,10 +157,10 @@ ActiveAdmin.setup do |config|
 
   # == Register Stylesheets & Javascripts
   config.clear_stylesheets!
-  config.register_stylesheet 'admin/active_admin.css'
+  config.register_stylesheet 'admin.css'
 
   config.clear_javascripts!
-  config.register_javascript 'admin/active_admin.js'
+  config.register_javascript 'admin.js'
   #
   # We recommend using the built in Active Admin layout and loading
   # up your own stylesheets / javascripts to customize the look
