@@ -31,5 +31,5 @@ FactoryGirl.create(:item, category: @tshirt, name: "t-shirt", price: 10.00, quan
 FactoryGirl.create(:item, category: @tshirt, name: "t-shirt", price: 10.00, quantity: 150, sold: 50, size: "large", color: "green")
 FactoryGirl.create(:item, category: @popsicle, name: "Popsicle", price: 1.00, quantity: 150, sold: 50, flavor: "cherry")
 FactoryGirl.create(:item, category: @popsicle, name: "Popsicle", price: 1.00, quantity: 150, sold: 50, flavor: "orange")
-FactoryGirl.create(:item, category: @candybars, name: "Snickers", price: 1.00, quantity: 150, sold: 50)
-FactoryGirl.create(:item, category: @candybars, name: "KitKat", price: 1.00, quantity: 150, sold: 50)
+FactoryGirl.create(:item, category: @candybars, name: "Snickers", price: 1.50, quantity: 150, sold: 50)
+FactoryGirl.create(:item, category: @candybars, name: "KitKat", price: 1.50, quantity: 150, sold: 50)
