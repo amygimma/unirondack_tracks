@@ -1,5 +1,6 @@
 class CampersController < ApplicationController
   before_action :authenticate_user!
+
   def show
   end
 
@@ -10,5 +11,11 @@ class CampersController < ApplicationController
       @campers = Camper.order(name: :asc)
     end
     @camp_sessions = CampSession.order(name: :asc)
+  end
+
+  private
+
+  def user_params
+    params.require(:camper).permit(:account_balance)
   end
 end
