@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624033320) do
+ActiveRecord::Schema.define(version: 20140626032840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,10 +103,11 @@ ActiveRecord::Schema.define(version: 20140624033320) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
-    t.integer  "total"
+    t.float    "total",      default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "camper_id"
+    t.boolean  "complete",   default: false
   end
 
   create_table "categories", force: true do |t|

@@ -28,6 +28,9 @@ UnirondackTracks::Application.routes.draw do
 
   resources :carts, only: [:show, :new, :create] do
     resources :cart_items, only: [:show, :new, :create, :update]
+    member { post :checkout }
+    member { post :total_cart }
+
   end
 
   resources :cart_items, only: [:show, :new, :create, :update]
