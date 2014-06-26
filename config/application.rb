@@ -8,6 +8,21 @@ Bundler.require(:default, Rails.env)
 
 module UnirondackTracks
   class Application < Rails::Application
+
+    config.assets.precompile += %w[ admin.css
+                                admin.js
+                                admin/active_admin.css
+                                admin/active_admin.js
+                                *.png
+                                *.jpg
+                                *.jpeg
+                                *.gif
+                                *.svg
+                                *.eot
+                                *.woff
+                                *.ttf
+                            ]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
