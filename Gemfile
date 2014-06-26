@@ -56,6 +56,7 @@ group :test do
   gem 'vcr', '2.4.0'
   gem 'webmock', '1.11.0'
   gem 'cucumber-rails', require: false
+  gem 'sqlite3'
   gem 'database_cleaner'
   gem 'launchy', '2.1.2'
   gem "mocha", require: false
