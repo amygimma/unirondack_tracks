@@ -8,7 +8,9 @@ end
 
 
 Given(/^I am a user$/) do
-  pending # express the regexp above with the code you wish you had
+  @user = FactoryGirl.create(:user)
+  binding.pry
+  login_as :user
 end
 
 Given(/^I am signed in$/) do
