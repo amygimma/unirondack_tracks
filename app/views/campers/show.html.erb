@@ -1,4 +1,5 @@
 <h1><%= @camper.name %></h1>
+<p>Account Balance: <%= number_to_currency(@camper.account_balance) %></p>
 <h2>Carts</h2>
 <div class="new-cart">
   <%= simple_form_for(@cart) do |f| %>
