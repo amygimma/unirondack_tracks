@@ -8,5 +8,10 @@
 
     content do
       para "User Form Here"
+      form do |f|
+	f.text_field "1", "2"
+      end
+      
+#       form_tag(controller: "people", action: "search", method: "get", class: "nifty_form")
     end
   end
