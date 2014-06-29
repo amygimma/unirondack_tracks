@@ -18,7 +18,7 @@
 
   <% unless @cart.complete %>
 
-    <div class="btn btn-info"><%= link_to "Update Total", total_cart_cart_path(cart), method: :post %></div><div class="btn btn-info"><%= link_to "Checkout", checkout_cart_path(cart), method: :post %></div>
+   <div class="btn btn-info"><%= link_to "Checkout", checkout_cart_path(cart), method: :post %></div>
     
 <div class="btn btn-danger"><%= link_to "delete", {:controller => :carts,
       :action => 'destroy', :id => @cart.id }, :method => :delete %></div>
