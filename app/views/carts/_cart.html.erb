@@ -4,7 +4,10 @@
   <p>Date of transaction: <%= cart.created_at %></p>
   <% cart.items.each do |item| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
-
+    <%= form_tag("/carts/" + cart.id.to_s + "/cart_items/"+item.id.to_s, method: "delete") do %>
+      <%= hidden_field "cart", "id",  :value => cart.id %>
+      <%= submit_tag "Remove" %>
+    <% end %>
   <% end %>
 
   <h3>Total: <%= number_to_currency(@total_price) %></h3>
