@@ -8,9 +8,11 @@
   <% end %>
 </div>
 <% @carts.each do |cart| -%>
- <h3>Date:<%= cart.created_at %></h3>
-  <% cart.items.each do |item| -%>
-    <p>Item:<%= item.name %> Price:<%= item.price%></p>
+  <% if carts.completed %>
+    <h3>Date:<%= cart.created_at %></h3>
+    <% cart.items.each do |item| -%>
+      <p>Item:<%= item.name %> Price:<%= item.price%></p>
+    <% end %>
   <% end %>
 <% end %>
 

@@ -1,13 +1,13 @@
 <div class="cart sm-col-12">
   <h1><%= camper_name.name %>'s Cart</h1>
-  <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance) %></p>
+  <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
   <p>Date of transaction: <%= cart.created_at %></p>
   <% cart.items.each do |item| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
 
   <% end %>
 
-  <h3>Total: <%= number_to_currency(cart.total) %></h3>
+  <h3>Total: <%= number_to_currency(@total_price) %></h3>
 
   <% unless @cart.complete %>
 

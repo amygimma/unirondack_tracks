@@ -11,7 +11,13 @@ class CartsController < ApplicationController
   end
 
   def show
+    @total_price = []
     @cart = Cart.find(params[:id])
+    @cart.cart_items.each do |ci|
+      #make into model methods
+      @total_price << ci.item.price
+    end
+    @total_price = @total_price.sum
     @categories = Category.all
     @items = Item.all
     @cart_item = CartItem.new
