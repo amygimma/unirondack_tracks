@@ -11,6 +11,8 @@ class CartsController < ApplicationController
   end
 
   def show
+    flash[:notice] = "Not enough in account balance"
+
     @total_price = []
     @cart = Cart.find(params[:id])
     @cart.cart_items.each do |ci|

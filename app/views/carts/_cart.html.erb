@@ -1,6 +1,10 @@
 <div class="cart sm-col-12">
   <h1><%= camper_name.name %>'s Cart</h1>
+  <% if flash[:notice] %>
+    <div><h3><%= flash[:notice] %></h3></div>
+  <% end %>
   <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
+
   <p>Date of transaction: <%= cart.created_at %></p>
   <% cart.items.each do |item| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
