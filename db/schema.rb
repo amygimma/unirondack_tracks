@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626032840) do
+ActiveRecord::Schema.define(version: 20140629010650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,10 +88,11 @@ ActiveRecord::Schema.define(version: 20140626032840) do
 
   create_table "campers", force: true do |t|
     t.string   "name"
-    t.float    "account_balance", default: 0.0
+    t.float    "account_balance",  default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "camp_session_id"
+    t.float    "starting_balance"
   end
 
   create_table "cart_items", force: true do |t|
