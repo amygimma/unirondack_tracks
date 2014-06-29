@@ -11,6 +11,7 @@ class CampersController < ApplicationController
       @campers = Camper.order(name: :asc)
     end
     @camp_sessions = CampSession.order(name: :asc)
+    @cart = Cart.new
   end
 
   private

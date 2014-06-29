@@ -2,5 +2,10 @@
   <p>Name: <%= camper.name %></p>
   <p>Session: <%= camper.camp_session_id %>
   <p>Available: <%= number_to_currency(camper.account_balance) %></p>
-
+  <div class="new-cart">
+    <%= simple_form_for(@cart) do |f| %>
+      <%= f.hidden_field :camper_id, value: camper.id %>
+      <button>New Cart</button>
+    <% end %>
+  </div>
 </div>
