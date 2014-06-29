@@ -2,6 +2,9 @@ class CampersController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @carts = Cart.where(camper_id: params[:id])
+    @camper = Camper.find(params[:id])
+    @cart = Cart.new
   end
 
   def index

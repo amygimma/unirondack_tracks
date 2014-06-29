@@ -49,6 +49,11 @@ class CartsController < ApplicationController
     camper.charge_account(@cart.total)
     redirect_to cart_path(@cart), notice: "Checkout Complete"
   end
+  
+  def destroy
+    Cart.destroy(params[:id])
+    redirect_to new_cart_path
+  end
 
   private
 

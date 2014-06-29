@@ -1,2 +1,15 @@
-<h1>Campers#show</h1>
-<p>Find me in app/views/campers/show.html.erb</p>
+<h1><%= @camper.name %></h1>
+<h2>Carts</h2>
+<div class="new-cart">
+  <%= simple_form_for(@cart) do |f| %>
+    <%= f.hidden_field :camper_id, value: @camper.id %>
+    <button>New Cart</button>
+  <% end %>
+</div>
+<% @carts.each do |cart| -%>
+ <h3>Date:<%= cart.created_at %></h3>
+  <% cart.items.each do |item| -%>
+    <p>Item:<%= item.name %> Price:<%= item.price%></p>
+  <% end %>
+<% end %>
+

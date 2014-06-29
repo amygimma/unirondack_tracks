@@ -1,13 +1,22 @@
 <div class="cart sm-col-12">
   <h1><%= camper_name.name %>'s Cart</h1>
   <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance) %></p>
+  <p>Date of transaction: <%= cart.created_at %></p>
   <% cart.items.each do |item| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
+
   <% end %>
 
   <h3>Total: <%= number_to_currency(cart.total) %></h3>
 
-  <div class="btn btn-info"><%= link_to "Update Total", total_cart_cart_path(cart), method: :post %></div><div class="btn btn-info"><%= link_to "Checkout", checkout_cart_path(cart), method: :post %></div>
+  <% unless @cart.complete %>
+
+    <div class="btn btn-info"><%= link_to "Update Total", total_cart_cart_path(cart), method: :post %></div><div class="btn btn-info"><%= link_to "Checkout", checkout_cart_path(cart), method: :post %></div>
+    
+<div class="btn btn-danger"><%= link_to "delete", {:controller => :carts,
+      :action => 'destroy', :id => @cart.id }, :method => :delete %></div>
+
+  <% end %>
 </div>
 
 

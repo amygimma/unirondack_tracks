@@ -1,20 +1,23 @@
-<div class="col-sm-3 category">
-    <div class="pull-left">
+<% unless @cart.complete %>
 
-      <h1><%= category.name %></h1>
-      <p>price: <%= number_to_currency(category.price) %> </p>
-    </div>
-    <div class="pull-right">
-      <% category.items.each do |item| %>
+  <div class="col-sm-3 category">
+      <div class="pull-left">
+
+	<h1><%= category.name %></h1>
+	<p>price: <%= number_to_currency(category.price) %> </p>
+      </div>
+      <div class="pull-right">
+	<% category.items.each do |item| %>
 
 
-        <%= form_for @cart_item, as: :cart_item do |f| %>
-          <%= f.hidden_field :cart_id, value: params[:id] %>
-          <%= f.hidden_field :item_id, value: item.id %>
-        <%= f.submit "#{item.name} #{item.color} #{item.size || item.flavor}", class: "btn btn-info btn-us center", method: "post" %>
+	  <%= form_for @cart_item, as: :cart_item do |f| %>
+	    <%= f.hidden_field :cart_id, value: params[:id] %>
+	    <%= f.hidden_field :item_id, value: item.id %>
+	  <%= f.submit "#{item.name} #{item.color} #{item.size || item.flavor}", class: "btn btn-info btn-us center", method: "post" %>
+  <% end %>
+
+
+	  <% end %>
+      </div>
+  </div>
 <% end %>
-
-
-        <% end %>
-    </div>
-</div>
