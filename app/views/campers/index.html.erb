@@ -1,3 +1,41 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript">
+$(function() {
+  $( ".ui-widget" ).hide();
+  var real_data = null;
+  $.getJSON( "api/campers", function( data ) {
+  $( ".ui-widget" ).show();
+  $( "#loading_search_message" ).hide();
+
+  console.log(data);
+  real_data = data;
+    $( "#tags" ).autocomplete({
+      source: data
+    })
+  });
+  $( "#submit_button" ).click(function() {
+    var search = $("#tags").val();
+    
+    var search_id = getByValue(real_data, search);
+    
+    var url = '/campers/' + search_id;
+   window.location.replace(url);
+
+    
+    function getByValue(arr, value) {
+      for (var i = 0; i < arr.length; i++) {
+	if (arr[i].value == search) {
+	  console.log(arr[i].id);
+	  return arr[i].id;
+	}
+      }
+    }
+  });
+});
+
+</script>
+
 <script>
 $(function() {
   $( "#select_session" ).change(function() {
@@ -27,6 +65,22 @@ $(function() {
 </script>
 
 <h1>All Campers</h1>
+
+      <div class="row">
+	    
+	  <div class="col-lg-12 text-center">
+	    <p id="loading_search_message">Loading search...</p>
+	    
+	    <div class="ui-widget">
+	      <label for="tags">Search by name: </label>
+	      <input class="search_input" id="tags" style="width:80%;">
+	      <input type="submit" value="Submit" id="submit_button">
+
+	    </div>
+	  </div>
+	  
+      </div>
+      <br><br>
 <div class="row">
   Order By Camp Session: <%= select "select", "session", @camp_sessions.map { |h|  [h.name, h.id] }, {prompt: "All"}, {:class => "select_query"} %></br>
 

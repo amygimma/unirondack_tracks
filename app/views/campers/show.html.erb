@@ -8,7 +8,7 @@
   <% end %>
 </div>
 <% @carts.each do |cart| -%>
-  <% if carts.completed %>
+  <% if cart.complete %>
     <h3>Date:<%= cart.created_at %></h3>
     <% cart.items.each do |item| -%>
       <p>Item:<%= item.name %> Price:<%= item.price%></p>
