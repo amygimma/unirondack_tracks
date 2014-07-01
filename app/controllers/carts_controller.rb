@@ -38,6 +38,10 @@ class CartsController < ApplicationController
     # return and notice: "This cart has already been checked out. Please start a new cart" if @cart.complete?
 
     @cart = Cart.find(params[:id])
+
+    redirect_to cart_path(@cart), notice: "This cart has already been checked out. Please start a new cart." if @cart.completed
+    redirect_to cart_path(@cart), notice: "Please add items to cart and press 'Cart Total' before completing" unless totals_checked
+
     @cart.update_attributes(complete: true)
     @cart.cart_items.each do |ci|
       #make into model methods
@@ -54,5 +58,10 @@ class CartsController < ApplicationController
 
   def cart_params
     params.require(:cart).permit(:camper_id)
+  end
+
+  def totals_checked
+    return false if @cart.cart_items.map { |ci| ci.price }.sum != @cart.total
+    true
   end
 end
