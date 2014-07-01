@@ -5,4 +5,12 @@ class Cart < ActiveRecord::Base
 
   validates :camper_id, presence: true
 
+  def update_cart_total
+    @total_price = []
+    self.cart_items.each do |ci|
+      @total_price << ci.item.price
+    end
+    @total_price = @total_price.sum
+    self.update_attributes(total: @total_price)
+  end
 end
