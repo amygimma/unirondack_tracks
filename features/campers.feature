@@ -1,4 +1,3 @@
-@javascript
 Feature: Campers Page
 
 Scenario: It should have a campers page
