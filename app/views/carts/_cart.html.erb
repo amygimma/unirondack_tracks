@@ -1,11 +1,11 @@
 <div class="cart sm-col-12">
   <h1><%= camper_name.name %>'s Cart</h1>
-  <% if @cart.camper.account_balance - @total_price < 0 %>
-    <div><h3>Not enough money in account. Please delete items.</h3></div>
-  <% end %>
   <% if cart.complete %>
     <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance) %></p>
   <% else %>
+    <% if @cart.camper.account_balance - @total_price < 0 %>
+      <div><h3>Not enough money in account. Please delete items.</h3></div>
+    <% end %>
     <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
   <% end %>
   <p>Date of transaction: <%= cart.created_at %></p>
