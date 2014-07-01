@@ -2,6 +2,9 @@ UnirondackTracks::Application.routes.draw do
   get "api/campers"
   root "static_pages#index"
   devise_for :users
+  # as :user do
+  #   get "signup" => "devise/sessions#new"
+  # end
   get "campers/show"
   get "campers/index"
   devise_for :admin_users, ActiveAdmin::Devise.config

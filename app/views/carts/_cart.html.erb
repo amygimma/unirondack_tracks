@@ -5,7 +5,7 @@
   <% end %>
   <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
 
-  <p>Date of transaction: <%= cart.created_at %></p>
+  <p>Date of transaction: <%= cart.created_at.strftime("%B %d, %l:%M%P (%Z)") %></p>
   <% cart.items.each do |item| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
     <%= form_tag("/carts/" + cart.id.to_s + "/cart_items/"+item.id.to_s, method: "delete") do %>
@@ -19,7 +19,7 @@
   <% unless @cart.complete %>
 
    <div class="btn btn-info"><%= link_to "Checkout", checkout_cart_path(cart), method: :post %></div>
-    
+
 <div class="btn btn-danger"><%= link_to "delete", {:controller => :carts,
       :action => 'destroy', :id => @cart.id }, :method => :delete %></div>
 
