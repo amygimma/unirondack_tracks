@@ -6,9 +6,9 @@
   <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
 
   <p>Date of transaction: <%= cart.created_at %></p>
-  <% cart.items.each do |item| %>
+  <% cart.items.each_with_index do |item, index| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
-    <%= form_tag("/carts/" + cart.id.to_s + "/cart_items/"+item.id.to_s, method: "delete") do %>
+    <%= form_tag("/carts/" + cart.id.to_s + "/cart_items/"+ cart.cart_items[index].id.to_s, method: "delete") do %>
       <%= hidden_field "cart", "id",  :value => cart.id %>
       <%= submit_tag "Remove" %>
     <% end %>
