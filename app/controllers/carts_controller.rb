@@ -11,13 +11,8 @@ class CartsController < ApplicationController
   end
 
   def show
-    @total_price = []
     @cart = Cart.find(params[:id])
-    @cart.cart_items.each do |ci|
-      #make into model methods
-      @total_price << ci.item.price
-    end
-    @total_price = @total_price.sum
+    @total_price = get_cart_checkout_price()
     @categories = Category.all
     @items = Item.all
     @cart_item = CartItem.new
@@ -52,7 +47,7 @@ class CartsController < ApplicationController
       ci.item.update_attributes(sold: ci.item.sold + 1)
     end
     camper = @cart.camper
-    camper.charge_account(@cart.total)
+    camper.charge_account(get_cart_checkout_price())
     redirect_to cart_path(@cart), notice: "Checkout Complete"
   end
   
@@ -65,5 +60,14 @@ class CartsController < ApplicationController
 
   def cart_params
     params.require(:cart).permit(:camper_id)
+  end
+  
+  def get_cart_checkout_price
+    @total_price = []
+    @cart.cart_items.each do |ci|
+      #make into model methods
+      @total_price << ci.item.price
+    end
+    @total_price = @total_price.sum
   end
 end

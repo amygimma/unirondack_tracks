@@ -3,8 +3,11 @@
   <% if @cart.camper.account_balance - @total_price < 0 %>
     <div><h3>Not enough money in account. Please delete items.</h3></div>
   <% end %>
-  <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
-
+  <% if cart.complete %>
+    <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance) %></p>
+  <% else %>
+    <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
+  <% end %>
   <p>Date of transaction: <%= cart.created_at %></p>
   <% cart.items.each_with_index do |item, index| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
