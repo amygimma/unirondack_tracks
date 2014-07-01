@@ -12,13 +12,12 @@ class CartItemsController < ApplicationController
   def update
     # @cart_item = CartItem.find(params[:id]).cart
   end
-  
+
   def destroy
     @cart = Cart.find(params[:cart_id])
-    @cart.items.destroy(params[:id])
+    @cart.cart_items.destroy(params[:id])
     redirect_to "/carts/" + params[:cart_id].to_s
   end
-
   private
 
   def cart_item_params
