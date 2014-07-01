@@ -55,7 +55,6 @@ class CartsController < ApplicationController
     end
     camper = @cart.camper
     camper.charge_account(@cart.total)
-    binding.pry
 
     redirect_to cart_path(@cart), notice: "Checkout Complete"
   end
