@@ -19,18 +19,8 @@ class CartsController < ApplicationController
   end
 
   def update
-  end
-
-  def total_cart
-    # return and notice: "Please add items to cart" if @cart.cart_items.empty?
     @cart = Cart.find(params[:id])
-    @total_price = []
-    @cart.cart_items.each do |ci|
-      #make into model methods
-      @total_price << ci.item.price
-    end
-    @total_price = @total_price.sum
-    @cart.update_attributes(total: @total_price)
+    @cart.update_attributes(cart_params)
     redirect_to cart_path(@cart)
   end
 
@@ -59,7 +49,7 @@ class CartsController < ApplicationController
   private
 
   def cart_params
-    params.require(:cart).permit(:camper_id)
+    params.require(:cart).permit(:camper_id, :donation)
   end
   
   def get_cart_checkout_price
@@ -68,6 +58,8 @@ class CartsController < ApplicationController
       #make into model methods
       @total_price << ci.item.price
     end
-    @total_price = @total_price.sum
+    
+    @total_price = @total_price.inject( @cart.donation ) { |total, n| total + n }
+
   end
 end

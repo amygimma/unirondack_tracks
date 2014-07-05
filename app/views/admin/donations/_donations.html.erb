@@ -1,0 +1,15 @@
+<table>
+	<tr>
+		<th>Camper</th>
+		<th>Donation</th>
+		<th>Camp Session</th>
+	</tr>
+
+	<% Cart.where.not(donation: 0).each do |donation| %>
+	<tr>
+		<td><%= donation.camper.name %></td>
+		<td><%= number_to_currency(donation.donation) %></td>
+		<td><%= donation.camper.camp_session.name %></td>
+	</tr>
+	<% end %>
+</table>

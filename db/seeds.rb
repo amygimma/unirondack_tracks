@@ -10,10 +10,13 @@ AdminUser.destroy_all
 CampSession.destroy_all
 Item.destroy_all
 Category.destroy_all
+User.destroy_all
+
 
 FactoryGirl.create(:camp_session)
 FactoryGirl.create(:camp_session, name: "Teens")
 
+FactoryGirl.create(:user)
 FactoryGirl.create(:admin_user)
 FactoryGirl.create(:camper, camp_session_id: 1)
 FactoryGirl.create(:camper, name: "Senior Stinkhead", camp_session_id: 2)
