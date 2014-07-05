@@ -22,7 +22,7 @@
   <% end %>
 
   <% if !cart.complete? %>
-    <%= form_for @cart, html: {class: "donation-form"} do |f| %>
+    <%= form_for @cart, url: cart_path(@cart), html: {method: "patch"} do |f| %>
       <%= f.label :donation %>
       <%= f.text_field :donation %>
       <%= f.submit "Add Donation" %>
