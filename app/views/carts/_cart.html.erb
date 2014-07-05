@@ -8,14 +8,25 @@
     <% end %>
     <p>Account Balance: <%= number_to_currency(@cart.camper.account_balance - @total_price) %></p>
   <% end %>
-  <p>Date of transaction: <%= cart.created_at %></p>
+  <p>Date of transaction: <%= cart.created_at.strftime("%m/%d/%Y %I:%M%p") %></p>
   <% cart.items.each_with_index do |item, index| %>
     <p><%= item.name %> <%= item.color %> <%= item.size %> <%= item.flavor %> -- price: <%= number_to_currency(item.price) %></p>
-    <%= form_tag("/carts/" + cart.id.to_s + "/cart_items/"+ cart.cart_items[index].id.to_s, method: "delete") do %>
-      <%= hidden_field "cart", "id",  :value => cart.id %>
-      <%= submit_tag "Remove" %>
+    <% if !cart.complete? %>
+      <%= form_tag("/carts/" + cart.id.to_s + "/cart_items/"+ cart.cart_items[index].id.to_s, method: "delete") do %>
+        <%= hidden_field "cart", "id",  :value => cart.id %>
+        <%= submit_tag "Remove" %>
+      <% end %>
     <% end %>
   <% end %>
+
+
+  <%= form_for @cart, html: {class: "donation-form"} do |f| %>
+    <%= f.label :donation %>
+    <%= f.text_field :donation %>
+    <%= f.submit "Add Donation" %>
+  <% end %>
+
+  <p>Donation: <%= number_to_currency(cart.donation) %></p>
 
   <h3>Total: <%= number_to_currency(@total_price) %></h3>
 
