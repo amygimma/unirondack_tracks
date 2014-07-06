@@ -5,7 +5,7 @@
 		<th>Camp Session</th>
 	</tr>
 
-	<% Cart.where.not(donation: 0).each do |donation| %>
+	<% Cart.where.not(donation: 0).where(complete: true).each do |donation| %>
 	<tr>
 		<td><%= donation.camper.name %></td>
 		<td><%= number_to_currency(donation.donation) %></td>

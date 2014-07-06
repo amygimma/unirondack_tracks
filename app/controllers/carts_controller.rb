@@ -12,7 +12,7 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find(params[:id])
-    @total_price = get_cart_checkout_price()
+    @total_price = get_cart_checkout_price
     @categories = Category.all
     @items = Item.all
     @cart_item = CartItem.new
@@ -49,17 +49,26 @@ class CartsController < ApplicationController
   private
 
   def cart_params
-    params.require(:cart).permit(:camper_id, :donation)
+    params.require(:cart).permit(:camper_id, :donation, :cash_out, :discount)
   end
   
   def get_cart_checkout_price
+    total_item_prices
+    @total_price = @total_price.inject( (@cart.donation + @cart.cash_out ) ) { |total, n| total + n }
+    apply_discount
+  end
+
+  def total_item_prices
     @total_price = []
     @cart.cart_items.each do |ci|
       #make into model methods
       @total_price << ci.item.price
     end
-    
-    @total_price = @total_price.inject( @cart.donation ) { |total, n| total + n }
+  end
 
+  def apply_discount
+    return @total_price unless @cart.discount
+    discount_from_price = @total_price * @cart.discount
+    @total_price -= discount_from_price
   end
 end
