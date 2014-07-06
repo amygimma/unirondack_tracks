@@ -22,14 +22,23 @@
   <% end %>
 
   <% if !cart.complete? %>
-    <%= form_for @cart, url: cart_path(@cart), html: {method: "patch"} do |f| %>
+    <%= form_for @cart, url: cart_path(@cart), html: {method: "patch"}, class: "manual-cart-fields" do |f| %>
       <%= f.label :donation %>
       <%= f.text_field :donation %>
-      <%= f.submit "Add Donation" %>
+      <%= f.label :cash_out %>
+      <%= f.text_field :cash_out %>
+      <%= f.label :discount %>
+      <%= f.text_field :discount %>
+      <p class="discount">**Please Enter discount as a decimal ( 25% => 0.25 )</p>
+      <p class="discount">**If applying a discount, do not cash our or donate - finish item checkout, then create a new cart</p>
+
+      <%= f.submit "Add to Total", class: "btn btn-success" %>
     <% end %>
   <% end %>
 
   <p>Donation: <%= number_to_currency(cart.donation) %></p>
+  <p>Cash Out: <%= number_to_currency(cart.cash_out) %></p>
+  <p>Discount: <%= discount_to_percentage(cart.discount) if cart.discount %></p>
 
   <h3>Total: <%= number_to_currency(@total_price) %></h3>
 
@@ -42,5 +51,3 @@
 
   <% end %>
 </div>
-
-
