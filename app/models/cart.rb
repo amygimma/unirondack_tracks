@@ -5,12 +5,13 @@ class Cart < ActiveRecord::Base
 
   validates :camper_id, presence: true
 
-  def update_cart_total
+  def update_cart_total_and_checkout
     @total_price = []
     self.cart_items.each do |ci|
       @total_price << ci.item.price
     end
-    @total_price = @total_price.inject( ( self.donation || 0 + self.cash_out || 0 ) ) { |total, n| total + n }
-    self.update_attributes(total: @total_price)
+    item_prices = self.cart_items.map { |ci| ci.item.price }
+    @total_price = item_prices.inject( ( self.donation || 0 + self.cash_out || 0 ) ) { |total, n| total + n }
+    self.update_attributes(total: @total_price, complete: true)
   end
 end
