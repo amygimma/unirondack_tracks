@@ -1,12 +1,3 @@
-Given(/^I am logged in$/) do
-  @user = FactoryGirl.create(:user)
-  login_as(@user, :scope => :user)
-end
-
-Given(/^there are campers$/) do
-  @camper = FactoryGirl.create(:camper)
-end
-
 Given(/^there are sessions$/) do
   @camp_session = FactoryGirl.create(:camp_session)
 end
