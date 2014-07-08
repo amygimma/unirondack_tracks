@@ -1,0 +1,38 @@
+.bg-img {
+  position: relative; 
+  width: 100%;
+  height: 900px;
+  background: image-url("camp.jpg");
+  background-size: cover;
+}
+
+.bg-img:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom right, darkgreen, yellow);
+  opacity: 0.6;
+}
+
+.tagline { 
+   position: absolute; 
+   top: 250px; 
+   left: 0; 
+   width: 100%; 
+}
+
+h1 {
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  text-shadow: 1px 0px 0px rgba(10, 10, 10, 1);
+}
+h2{
+  color: white;
+  text-align: center;
+  text-shadow: 1px 0px 0px rgba(10, 10, 10, 1);
+
+}

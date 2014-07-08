@@ -7,4 +7,5 @@ describe Camper do
 
   it { should respond_to :name }
   it { should respond_to :account_balance }
+  it { should respond_to :carts }
 end

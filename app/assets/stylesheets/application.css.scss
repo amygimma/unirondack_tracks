@@ -15,3 +15,14 @@
 @import "application/campers";
 @import "application/carts";
 @import "application/items";
+@import "application/static_pages";
+
+body, .container-fluid {
+	margin: 0;
+	padding: 0;
+}
+
+.navbar {
+	margin: 0;
+}
+
