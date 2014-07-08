@@ -19,9 +19,9 @@ FactoryGirl.create(:camp_session, name: "Teens")
 FactoryGirl.create(:user)
 FactoryGirl.create(:admin_user)
 FactoryGirl.create(:camper, camp_session_id: 1)
-FactoryGirl.create(:camper, name: "Senior Stinkhead", camp_session_id: 2)
+FactoryGirl.create(:camper, name: "Venus Williams", camp_session_id: 2)
 
-FactoryGirl.create(:camper, name: "Ugly Pants", camp_session_id: 2)
+FactoryGirl.create(:camper, name: "Andy Roddick", camp_session_id: 2)
 
 @tshirt = FactoryGirl.create(:category, name: "t-shirt", price: 10.00)
 @popsicle = FactoryGirl.create(:category, name: "popsicle", price: 1.00)

@@ -6,11 +6,11 @@ Given(/^I am an admin$/) do
   click_on "Login"
 end
 
-
-Given(/^I am a user$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I am logged in$/) do
+  @user = FactoryGirl.create(:user)
+  login_as(@user, :scope => :user)
 end
 
-Given(/^I am signed in$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^there are campers$/) do
+  @camper = FactoryGirl.create(:camper)
 end

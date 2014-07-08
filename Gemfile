@@ -53,8 +53,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'guard-rspec', '2.4.1'
   gem 'rb-fsevent', '0.9.3'
-  gem 'vcr', '2.4.0'
-  gem 'webmock', '1.11.0'
   gem 'cucumber-rails', require: false
   gem 'sqlite3'
   gem 'database_cleaner'
@@ -66,14 +64,3 @@ end
 
 # gem 'paper_trail'
 
-# background jobs
-# gem "sidekiq", "~> 2.16.0"
-# gem 'sidetiq', '~> 0.5.0'
-
-# gem 'httparty' ??
-# gem 'unicorn'
-# gem 'lograge'
-# gem 'public_activity'
-# gem 'state_machine'
-
-# gem 'actionpack' 4.1.1 ????

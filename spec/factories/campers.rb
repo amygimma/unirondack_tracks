@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :camper do
-    name "Stinky Head"
+    name "Roger Federer"
     account_balance 30
   end
 end
